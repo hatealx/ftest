@@ -23,8 +23,8 @@ class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
     return Row(
       children: [
         AnimatedContainer(
-          duration: Duration(milliseconds: 500),
-          curve: Curves.bounceIn,
+          duration: Duration(milliseconds: 100),
+          curve: Curves.bounceInOut,
           color: Colors.amber,
           height: _height,
           width: _width,

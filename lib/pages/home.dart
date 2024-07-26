@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ftest/widgets/animated_container.dart';
+import 'package:ftest/widgets/animated_cross_fade.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,7 +17,9 @@ class _HomeState extends State<Home> {
         body: SafeArea(
           child: Column(
             children: [
-              AnimatedContainerWidget()
+              AnimatedContainerWidget(),
+              Divider(),
+              AnimatedCrossFadeWidget(),
             ],
           )
           ),
