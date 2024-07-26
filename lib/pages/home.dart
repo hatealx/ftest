@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ftest/widgets/animated_container.dart';
 import 'package:ftest/widgets/animated_cross_fade.dart';
+import 'package:ftest/widgets/animated_opacity.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,6 +21,8 @@ class _HomeState extends State<Home> {
               AnimatedContainerWidget(),
               Divider(),
               AnimatedCrossFadeWidget(),
+              Divider(),
+              AnimatedOpacityWidget(),
             ],
           )
           ),
