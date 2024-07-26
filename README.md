@@ -1,8 +1,8 @@
 # ftest
 
-A new Flutter project.
+A flutter learning repository
 
-## Getting Started
+## Getting Started 
 
 This project is a starting point for a Flutter application.
 
