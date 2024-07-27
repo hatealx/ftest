@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ftest/widgets/animated_container.dart';
-import 'package:ftest/widgets/animated_cross_fade.dart';
-import 'package:ftest/widgets/animated_opacity.dart';
+import 'package:ftest/widgets/animated_balloon.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -16,14 +15,16 @@ class _HomeState extends State<Home> {
         title: const Text("Home"),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              AnimatedContainerWidget(),
-              Divider(),
-              AnimatedCrossFadeWidget(),
-              Divider(),
-              AnimatedOpacityWidget(),
-            ],
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  AnimatedBalloonWidget(),
+                ],
+              ),
+              ),
           )
           ),
     );
