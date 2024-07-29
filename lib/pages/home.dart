@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ftest/pages/birthdays.dart';
+import 'package:ftest/pages/gratitude.dart';
+import 'package:ftest/pages/reminders.dart';
 
 
 
@@ -7,9 +10,30 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
   
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_tabChanged);
 
+  }
+  @override
+  void dispose()
+  {
+      super.dispose();
+      _tabController.dispose();
+
+  }
+  void _tabChanged(){
+    if (_tabController.indexIsChanging){
+      print("tabChanged: ${_tabController.index}");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,47 +41,39 @@ class _HomeState extends State<Home> {
         title: const Text("BottomAppbar"),
       ),
       body:SafeArea(
-        child:Container(
-
+        child:TabBarView(
+          controller: _tabController,
+        children: [
+          Birthdays(),
+          Gratitude(),
+          Reminders(),
+        ]
         )
-        
-
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {  
-      },
-      child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        color: Colors.blueAccent,
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              onPressed: (){}, 
-              icon: const Icon(
-                Icons.access_alarm),
-                color: Colors.white
-              ),
-               IconButton(
-              onPressed: (){}, 
-              icon: const Icon(
-                Icons.bookmark_border),
-                color: Colors.white
-              ),
-               IconButton(
-              onPressed: (){}, 
-              icon: const Icon(
-                Icons.flight),
-                color: Colors.white
-              ),
-              Divider()
+     
+      bottomNavigationBar: SafeArea(
+       
+        child: TabBar(
+          controller: _tabController,
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.black87,
+          tabs: const [
+            Tab(
+              icon: Icon(Icons.cake),
+              text: "Birthdays",
+            ),
+            Tab(
+              icon: Icon(Icons.sentiment_satisfied),
+              text: "Gratitude",
+            ),
+            Tab(
+              icon: Icon(Icons.access_alarm),
+              text: "Reminders",
+            )
           ],
-        ),
-      ),
+          )
+        )
+
       
     );
   
