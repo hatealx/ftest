@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'gratitude.dart';
-import 'birthdays.dart';
-import 'reminders.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -10,52 +8,58 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-
-  List _listPages = [];
-  late Widget _currentPage;
-
-  void _changePage(int selectedIndex) {
-    setState(() {
-      _currentIndex = selectedIndex;
-      _currentPage = _listPages[selectedIndex];
-    });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _listPages
-      ..add(Birthdays())
-      ..add(Gratitude())
-      ..add(Reminders());
-    _currentPage = Birthdays();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Hero Navigation Animation"),
+        title: const Text("BottomAppbar"),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: _currentPage,
+      body:SafeArea(
+        child:Container(
+
+        )
+        
+
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {  
+      },
+      child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: Colors.blueAccent,
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: (){}, 
+              icon: const Icon(
+                Icons.access_alarm),
+                color: Colors.white
+              ),
+               IconButton(
+              onPressed: (){}, 
+              icon: const Icon(
+                Icons.bookmark_border),
+                color: Colors.white
+              ),
+               IconButton(
+              onPressed: (){}, 
+              icon: const Icon(
+                Icons.flight),
+                color: Colors.white
+              ),
+              Divider()
+          ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.cake), label: "Birthdays"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.sentiment_satisfied), label: "Gratitude"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.access_alarm), label: "Remnders")
-        ],
-        onTap: (selectedIndex) => _changePage(selectedIndex),
-      ),
+      
     );
-  }
+  
+}
 }
