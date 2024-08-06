@@ -1,33 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:ftest/widgets/left_drawer.dart';
-import 'package:ftest/widgets/right_drawer.dart';
+import 'package:ftest/widgets/header.dart';
+import 'package:ftest/widgets/row_with_card.dart';
+import 'package:ftest/widgets/row.dart';
 
 
-class Home extends StatefulWidget {
-  @override
-  State<Home> createState() => _HomeState();
-}
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
-  
-  
-  
+class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        child: Scaffold(
-          appBar: AppBar(title: const Text("BottomAppbar"),),
-          drawer: LeftDrawerWidget(),
-          endDrawer: RightDrawerWidget(),
-          body: SafeArea(
-            child: Container(),
-            ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("ListView"),
+      ),
+      body: SafeArea(
+      child: ListView.builder(
+        itemCount: 20,
+        itemBuilder: (BuildContext context, int index){
+          if (index == 0){
+            return Header();
+          }
+          else if (index >= 1 && index <= 3){
+            return RowWithCardWidget(index: index);
+          }
+          else{
+            return RowWidget(index: index);
+          }
+        }
+
       )
-    );
-     
-   
-}
+    ),
+    )
+
+    ;
+  }
 }
