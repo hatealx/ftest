@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ftest/widgets/header.dart';
-import 'package:ftest/widgets/row_with_card.dart';
-import 'package:ftest/widgets/row.dart';
+import 'package:ftest/widgets/gridview_builder.dart';
 
 
 
@@ -15,23 +13,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("ListView"),
       ),
-      body: SafeArea(
-      child: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (BuildContext context, int index){
-          if (index == 0){
-            return Header();
-          }
-          else if (index >= 1 && index <= 3){
-            return RowWithCardWidget(index: index);
-          }
-          else{
-            return RowWidget(index: index);
-          }
-        }
-
-      )
-    ),
+      body: const GridViewBuilderWidget(),
     )
 
     ;
