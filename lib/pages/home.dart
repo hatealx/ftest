@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ftest/widgets/gridview_builder.dart';
+import 'package:ftest/widgets/stack.dart';
+import 'package:ftest/widgets/stack_favorite.dart';
+
 
 
 
@@ -11,11 +13,25 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ListView"),
+        title: Text("StackWidget"),
       ),
-      body: const GridViewBuilderWidget(),
-    )
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount:7,
+          itemBuilder: (BuildContext context, int index) {
+            if (index.isEven){
+              return const StackWidget();
+            }
+            else{
+              return const StackFavoriteWidget();
+            }
 
+          },
+
+
+         )
+      )
+    )
     ;
   }
 }
